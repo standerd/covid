@@ -8,7 +8,6 @@ const run = async () => {
         const repo = context.repo.repo;
         const owner = context.repo.owner;
         const language = core.getInput('lang');
-
         const dir = './.lighthouseci';
         const [file] = fs.readdirSync(dir).filter(f => f.startsWith('lhr-') && f.endsWith('.json'));
         const lhr = JSON.parse(fs.readFileSync(`${dir}/${file}`, 'utf8'));
