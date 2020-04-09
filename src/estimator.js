@@ -21,14 +21,14 @@ const covid19ImpactEstimator = (data) => {
     time = Math.floor(timeToElapse / 3);
   }
 
-  impact.infectionsByRequestedTime = imCurr * 2 ** time;
-  severeImpact.infectionsByRequestedTime = sevCur * 2 ** time;
+  impact.infectionsByRequestedTime = Math.trunc(imCurr * 2 ** time);
+  severeImpact.infectionsByRequestedTime = Math.trunc(sevCur * 2 ** time);
 
   const imRT = impact.infectionsByRequestedTime;
   const sevRT = severeImpact.infectionsByRequestedTime;
 
-  impact.severeCasesByRequestedTime = imRT * 0.15;
-  severeImpact.severeCasesByRequestedTime = sevRT * 0.15;
+  impact.severeCasesByRequestedTime = Math.trunc(imRT * 0.15);
+  severeImpact.severeCasesByRequestedTime = Math.trunc(sevRT * 0.15);
 
   const imSC = impact.severeCasesByRequestedTime;
   const sevSC = severeImpact.severeCasesByRequestedTime;
