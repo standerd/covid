@@ -1,10 +1,6 @@
-const currentImpact = (cases) => {
-  return cases * 10;
-}
+const currentImpact = (cases) => cases * 10;
 
-const currentSevere = (cases) => {
-  return cases * 50;
-}
+const currentSevere = (cases) => cases * 50;
 
 const covid19ImpactEstimator = (data) => {
   const impact = {};
