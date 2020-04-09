@@ -18,9 +18,8 @@ app.use(logger(function (tokens, req, res) {
     tokens.method(req, res),
     tokens.url(req, res),
     tokens.status(req, res),
-    tokens.res(req, res, 'content-length'), '-',
     tokens['response-time'](req, res), 'ms'
-  ].join(' ')
+  ].join('  ')
   console.log("Hello From The Logger" + display)
   fs.writeFileSync('test.json', JSON.stringify({data: display}));
   return display;
@@ -41,8 +40,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/idex', indexRouter);
+app.use('/', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
