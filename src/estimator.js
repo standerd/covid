@@ -36,11 +36,11 @@ const covid19ImpactEstimator = (data) => {
   impact.hospitalBedsByRequestedTime = Math.trunc(totalHospitalBeds * 0.35 - imSC);
   severeImpact.hospitalBedsByRequestedTime = Math.trunc(totalHospitalBeds * 0.35 - sevSC);
 
-  impact.casesForICUByRequestedTime = imRT * 0.05;
-  severeImpact.casesForICUByRequestedTime = sevRT * 0.05;
+  impact.casesForICUByRequestedTime = Math.trunc(imRT * 0.05);
+  severeImpact.casesForICUByRequestedTime = Math.trunc(sevRT * 0.05);
 
-  impact.casesForVentilatorsByRequestedTime = imRT * 0.02;
-  severeImpact.casesForVentilatorsByRequestedTime = sevRT * 0.02;
+  impact.casesForVentilatorsByRequestedTime = Math.trunc(imRT * 0.02);
+  severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(sevRT * 0.02);
 
   const income = data.region.avgDailyIncomeInUSD;
   const regPeople = imRT * data.region.avgDailyIncomePopulation;
