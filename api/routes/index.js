@@ -5,7 +5,7 @@ var router = express.Router();
 router.post('/post', function(req, res, next) {
   console.log("Received a request");
   // res.render('index', { title: 'Express' });
-  res.json({message: "Hello world"})
+  res.json({message: "Hello world"});
 });
 
 module.exports = router;
