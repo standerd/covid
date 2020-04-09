@@ -1,21 +1,22 @@
 const covid19ImpactEstimator = (data) => {
+  const {reportedCases, periodType, totalHospitalBeds} = data;
   const impact = {};
   const severeImpact = {};
   let time;
   let incomeTime;
 
-  impact.currentlyInfected = data.reportedCases * 10;
-  severeImpact.currentlyInfected = data.reportedCases * 50;
+  impact.currentlyInfected = reportedCases * 10;
+  severeImpact.currentlyInfected = reportedCases * 50;
 
   const imCurr = impact.currentlyInfected;
   const sevCur = severeImpact.currentlyInfected;
 
-  if (data.periodType === 'months') {
-    time = Math.floor((data.timeToElapse * 30) / 3);
+  if (periodType === 'months') {
+    time = Math.floor((timeToElapse * 30) / 3);
   } else if (data.periodType === 'weeks') {
-    time = Math.floor((data.timeToElapse * 7) / 3);
+    time = Math.floor((timeToElapse * 7) / 3);
   } else {
-    time = Math.floor(data.timeToElapse / 3);
+    time = Math.floor(timeToElapse / 3);
   }
 
   impact.infectionsByRequestedTime = imCurr * 2 ** time;
@@ -30,8 +31,8 @@ const covid19ImpactEstimator = (data) => {
   const imSC = impact.severeCasesByRequestedTime;
   const sevSC = severeImpact.severeCasesByRequestedTime;
 
-  impact.hospitalBedsByRequestedTime = data.totalHospitalBeds * 0.35 - imSC;
-  severeImpact.hospitalBedsByRequestedTime = data.totalHospitalBeds * 0.35 - sevSC;
+  impact.hospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35 - imSC);
+  severeImpact.hospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35 - sevSC);
 
   impact.casesForICUByRequestedTime = imRT * 0.05;
   severeImpact.casesForICUByRequestedTime = sevRT * 0.05;
