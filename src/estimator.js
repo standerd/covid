@@ -54,8 +54,11 @@ const covid19ImpactEstimator = (data) => {
     incomeTime = timeToElapse;
   }
 
-  impact.dollarsInFlight = regPeople * income * incomeTime;
-  severeImpact.dollarsInFlight = sevPeople * income * incomeTime;
+  const impDollars = regPeople * income * incomeTime;
+  const sevDollars = sevPeople * income * incomeTime;
+
+  impact.dollarsInFlight = impDollars.toFixed(2);
+  severeImpact.dollarsInFlight = sevDollars.toFixed(2);
 
   return { data, impact, severeImpact };
 };
