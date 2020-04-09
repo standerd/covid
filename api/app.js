@@ -1,29 +1,48 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 const fs = require('fs');
+let obj = { log: [] };
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger(function (tokens, req, res) {
-  let display = [
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res),
-    tokens['response-time'](req, res), 'ms'
-  ].join('  ')
-  console.log("Hello From The Logger" + display)
-  fs.writeFileSync('test.json', JSON.stringify({data: display}));
-  return display;
-}));
+app.use(
+  logger(function (tokens, req, res) {
+    let display = [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens['response-time'](req, res),
+      'ms'
+    ].join('  ');
+
+    fs.readFile(
+      'test.json',
+      'utf8',
+      (readFileCallback = (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          obj = JSON.parse(data); //now it an object
+          obj.log.push(display); //add some data
+          json = JSON.stringify(obj); //convert it back to json
+          fs.writeFile('test.json', json, 'utf8', () => console.log('Done')); // write it back
+        }
+      })
+    );
+
+    // fs.writeFileSync('test.json', JSON.stringify({data: log}));
+    return display;
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,12 +50,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
-    "Access-Control-Allow-Methods",
-    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    'Access-Control-Allow-Methods',
+    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 

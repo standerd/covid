@@ -1,1 +1,1 @@
-{"data":"POST  /api/v1/on-covid-19/xml  200  10.072  ms"}
+{"log":["POST  /api/v1/on-covid-19/xml  200  9.636  ms","POST  /api/v1/on-covid-19/xml  200  9.109  ms","POST  /api/v1/on-covid-19/xml  200  9.348  ms","POST  /api/v1/on-covid-19/logs  200  13.393  ms","POST  /api/v1/on-covid-19/logs  200  15.174  ms","POST  /api/v1/on-covid-19/logs  200  10.434  ms","POST  /api/v1/on-covid-19/logs  200  10.421  ms","POST  /api/v1/on-covid-19/logs  200  10.318  ms"]}
