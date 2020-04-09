@@ -46,16 +46,16 @@ const covid19ImpactEstimator = (data) => {
   const regPeople = imRT * data.region.avgDailyIncomePopulation;
   const sevPeople = sevRT * data.region.avgDailyIncomePopulation;
 
-  if (data.periodType === 'months') {
-    incomeTime = data.timeToElapse * 30;
-  } else if (data.periodType === 'weeks') {
-    incomeTime = data.timeToElapse * 7;
+  if (periodType === 'months') {
+    incomeTime = timeToElapse * 30;
+  } else if (periodType === 'weeks') {
+    incomeTime = timeToElapse * 7;
   } else {
-    incomeTime = data.timeToElapse;
+    incomeTime = timeToElapse;
   }
 
-  impact.dollarsInFlight = Math.round(regPeople * income * incomeTime);
-  severeImpact.dollarsInFlight = Math.round(sevPeople * income * incomeTime);
+  impact.dollarsInFlight = regPeople * income * incomeTime;
+  severeImpact.dollarsInFlight = sevPeople * income * incomeTime;
 
   return { data, impact, severeImpact };
 };

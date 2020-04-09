@@ -6,41 +6,50 @@
     <title>Covid 19 Estimator</title>
   </head>
   <body>
-    <h1>Hello This Is Working???</h1>
+    <h1>Go Estimate</h1>
     <form onsubmit="submitForm(event)">
       <label for="population">Population:</label><br />
       <input
         type="text"
         id="population"
-        data-population
+        data-population=""
         name="population"
-      /><br />
+      /><br /><br />
       <label for="timeToElapse">Time To Elapse:</label><br />
       <input
         type="text"
         id="timeToElapse"
-        data-time-to-elapse
+        data-time-to-elapse=""
         name="timeToElapse"
-      /><br />
+      /><br /><br />
       <label for="reportedCases">Reported Cases:</label><br />
       <input
         type="text"
         id="reportedCases"
-        data-reported-cases
+        data-reported-cases=""
         name="reportedCases"
       /><br /><br />
       <label for="totalHospitalBeds">Total Hospital Beds:</label><br />
       <input
         type="text"
         id="totalHospitalBeds"
-        data-total-hospital-beds
+        data-total-hospital-beds=""
         name="totalHospitalBeds"
       /><br /><br />
-      <label for="lname">Period Type:</label><br />
-      <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
-      <label for="lname">Last name:</label><br />
-      <input type="select" id="lname" name="lname" value="Doe" /><br /><br />
-      <button type="submit" value="Submit" />
+      <label for="periodType">Period Type:</label><br />
+      <input
+        type="select"
+        id="periodType"
+        data-period-type=""
+        name="periodType"
+      /><br /><br />
+      <select id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+      <button type="submit" data-go-estimate>Go Estimate</button>
     </form>
 
     <script src="js/scripts.js"></script>
