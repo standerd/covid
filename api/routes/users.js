@@ -37,7 +37,7 @@ router.post('/api/v1/on-covid-19/logs', function (req, res, next) {
         sending += element + '\n';
       });
 
-      res.send(sending);
+      res.send(sending.toString());
     })
   );
 });
