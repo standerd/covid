@@ -29,7 +29,7 @@ router.get('/api/v1/on-covid-19/log', function (req, res, next) {
         res.send('There was an error');
         console.log(err);
       } else {
-        returnData = JSON.parse(data);
+        returnData = JSON.parse(data)
       }
       let sending = '';
 
