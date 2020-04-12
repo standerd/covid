@@ -36,7 +36,7 @@ router.get('/api/v1/on-covid-19/logs', function (req, res, next) {
       returnData.log.forEach((element) => {
         sending += element + '\n';
       });
-      res.set("Content-Type", "text/plain" )
+      res.set("Content-Type", "text/html" )
       res.send(sending.toString());
     })
   );
