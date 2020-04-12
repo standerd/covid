@@ -19,7 +19,7 @@ router.post('/api/v1/on-covid-19/xml', function (req, res, next) {
   res.send(xml(sending));
 });
 
-router.get('/api/v1/on-covid-19/logs', function (req, res, next) {
+router.get('/api/v1/on-covid-19/log', function (req, res, next) {
   let returnData;
   fs.readFile(
     'test.json',
