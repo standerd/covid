@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Covid 19 Estimator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Covid 19 Impact Estimator</h1>
+      <form onsubmit="submitForm(event)">
+        <label for="population">Population:</label><br />
+        <input
+          type="text"
+          id="population"
+          data-population
+          name="population"
+        /><br /><br />
+        <label for="timeToElapse">Time To Elapse:</label><br />
+        <input
+          type="text"
+          id="timeToElapse"
+          data-time-to-elapse
+          name="timeToElapse"
+        /><br /><br />
+        <label for="reportedCases">Reported Cases:</label><br />
+        <input
+          type="text"
+          id="reportedCases"
+          data-reported-cases
+          name="reportedCases"
+        /><br /><br />
+        <label for="totalHospitalBeds">Total Hospital Beds:</label><br />
+        <input
+          type="text"
+          id="totalHospitalBeds"
+          data-total-hospital-beds
+          name="totalHospitalBeds"
+        /><br /><br />
+        <select id="periodType" data-period-type name="periodType">
+          <option value="default">Period Type</option>
+          <option value="days">Days</option>
+          <option value="weeks">Weeks</option>
+          <option value="months">Months</option>
+        </select>
+        <br /><br />
+        <button type="submit" data-go-estimate>Go Estimate</button>
+      </form>
+    </div>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

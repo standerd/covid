@@ -1,7 +1,5 @@
 const covid19ImpactEstimator = (data) => {
-  const {
-    reportedCases, periodType, totalHospitalBeds, timeToElapse
-  } = data;
+  const { reportedCases, periodType, totalHospitalBeds, timeToElapse } = data;
   const impact = {};
   const severeImpact = {};
   let time;
@@ -33,8 +31,12 @@ const covid19ImpactEstimator = (data) => {
   const imSC = impact.severeCasesByRequestedTime;
   const sevSC = severeImpact.severeCasesByRequestedTime;
 
-  impact.hospitalBedsByRequestedTime = Math.trunc(totalHospitalBeds * 0.35 - imSC);
-  severeImpact.hospitalBedsByRequestedTime = Math.trunc(totalHospitalBeds * 0.35 - sevSC);
+  impact.hospitalBedsByRequestedTime = Math.trunc(
+    totalHospitalBeds * 0.35 - imSC
+  );
+  severeImpact.hospitalBedsByRequestedTime = Math.trunc(
+    totalHospitalBeds * 0.35 - sevSC
+  );
 
   impact.casesForICUByRequestedTime = Math.trunc(imRT * 0.05);
   severeImpact.casesForICUByRequestedTime = Math.trunc(sevRT * 0.05);
@@ -66,4 +68,4 @@ const covid19ImpactEstimator = (data) => {
   return { data, impact, severeImpact };
 };
 
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
