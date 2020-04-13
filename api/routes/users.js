@@ -31,7 +31,7 @@ router.get('/api/v1/on-covid-19/log', function (req, res, next) {
       } else {
         returnData = JSON.parse(data)
       }
-      let sending = '';
+      let sending = ''
 
       returnData.log.forEach((element) => {
         sending += element + '\n'
